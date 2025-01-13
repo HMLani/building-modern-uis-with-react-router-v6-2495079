@@ -1,10 +1,11 @@
-// import logo from "../assets/red30-tech-logo.png";
 import { Routes, Route } from "react-router-dom";
 
 import Home from "./Home";
 import Categories from "./Categories";
+import Category from "./Category";
 import About from "./About";
 import Header from "./Header";
+import Session from "./Session";
 
 function App() {
   return (
@@ -13,8 +14,13 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Home title='Welcome to Red30 Tech' />}/>
-        <Route path='categories' element={<Categories />}/>
-        <Route path='about' element={<About />}/>
+        <Route path='Categories' element={<Categories />}>
+          <Route path=':catId' element={<Category />}>
+            <Route path=':sessionId' element={<Session />}/>
+          </Route>
+        </Route>
+        <Route path='About' element={<About />}/>
+        <Route path='*' element={<h1 className='not-found'>404 Page not found</h1>}/>
       </Routes>
 
       <footer className="container">
