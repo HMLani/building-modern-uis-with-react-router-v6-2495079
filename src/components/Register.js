@@ -1,10 +1,15 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+  const navigate = useNavigate();
   const emailRef = useRef(null);
+  const firstNameRef = useRef(null);
+  const lastNameRef = useRef(null);
 
   function handleSubmit(event) {
     event.preventDefault();
+    navigate('/confirmed', {  state: { email: emailRef.current.value, firstName: firstNameRef.current.value, lastName: lastNameRef.current.value } });
   }
 
   return (
@@ -15,11 +20,22 @@ export default function Register() {
         technology and consistently work towards being the premier provider of
         technology solutions and events that connect the world.
       </p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} autoComplete="off">
         <label>
           Email:
           <input type="text" name="email" ref={emailRef} />
         </label>
+
+        <label>
+          First Name:
+          <input type="text" name="firstName" ref={firstNameRef}/>
+        </label>
+
+        <label>
+          Last Name:
+          <input type="text" name="lastName" ref={lastNameRef}/>
+        </label>
+
         <input type="submit" value="Submit" />
       </form>
     </div>

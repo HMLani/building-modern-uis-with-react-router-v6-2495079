@@ -6,6 +6,8 @@ import Category from "./Category";
 import About from "./About";
 import Header from "./Header";
 import Session from "./Session";
+import Register from "./Register";
+import Confirmation from "./Confirmation";
 
 function App() {
   return (
@@ -18,8 +20,11 @@ function App() {
           <Route path=':catId' element={<Category />}>
             <Route path=':sessionId' element={<Session />}/>
           </Route>
+          <Route index element={<h3>Select a category from above</h3>}/>
         </Route>
         <Route path='About' element={<About />}/>
+        <Route path='Register' element={<Register />}/>
+        <Route path='Confirmed' element={<Confirmation />}/>
         <Route path='*' element={<h1 className='not-found'>404 Page not found</h1>}/>
       </Routes>
 
